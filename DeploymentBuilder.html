@@ -64,28 +64,33 @@ gcr.io/your-project-id/your-namespace/your-image:latest
 						<div class="panel panel-primary">
 							<div class="panel-body">
 								<div class="row">
-									<div class="col-lg-4 col-sm-6 col-md-6">
+									<div class="col-lg-6 col-sm-6 col-md-6">
 										<div class="input-group">
-										  <span class="input-group-addon"><button v-on:click="deletePort(port)"><span class="glyphicon glyphicon-trash"></span></button> Container Port</span>
+										  <span class="input-group-addon" style=" padding:0 15px;"><button v-on:click="deletePort(port)"><span class="glyphicon glyphicon-trash"></span></button> Container Port</span>
 										  <input type="text" class="form-control" v-model="port.ContainerPort" />
 										</div>
 									</div>
-									<div class="col-lg-3 col-md-6 col-sm-6" style="margin-top: 5px;">
+									<div class="col-lg-6 col-md-6 col-sm-6" style="margin-top: 5px;">
 										<input type="checkbox" v-model="port.ExposeViaService" /> Expose Service Port
 									</div>
-									<div class="col-lg-3 col-md-6 col-sm-6" v-show="port.ExposeViaService">
+                                    <div class="clearfix">&nbsp;</div>
+										<div class="col-lg-6 col-md-6 col-sm-6" v-show="port.ExposeViaService">
 										<div class="input-group">
 											<span class="input-group-addon">
 												Exposed Port Number
 											</span>
 											<input type="text" class="form-control" v-model="port.ServicePort" placeholder="port #" style="min-width: 50px;" />
 										</div>
+</div>
+									<div class="col-lg-6 col-md-6 col-sm-6" v-show="port.ExposeViaService">
+
 										<div class="input-group">
 											<span class="input-group-addon">Port Name</span>
 											<input type="text" class="form-control" v-model="port.ServicePortName" placeholder="Port Name (optional)" />
 										</div>
-									</div>
-									<div class="col-lg-3 col-md-6 col-sm-6" v-show="port.ExposeViaService">
+                                        
+                                        </div>
+									<div class="col-lg-6 col-md-6 col-sm-6" style=" margin-top:10px;" v-show="port.ExposeViaService">
 										<div>
 											<label for="selProtocol">Protocol</label>
 											<select class="form-control" name="selProtocol" ID="selProtocol" v-model="port.ServicePortProtocol" style="min-width: 100px;">
