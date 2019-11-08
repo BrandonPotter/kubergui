@@ -226,13 +226,21 @@ gcr.io/your-project-id/your-namespace/your-image:latest
 						}
 					}
 					var deploymentObj = {
-						'apiVersion': 'extensions/v1beta1',
+						'apiVersion': 'apps/v1',
 						'kind': 'Deployment',
 						'metadata': {
-							'name': this.DeploymentName
+							'name': this.DeploymentName,
+							'labels': {
+								'app': this.AppLabel
+							}
 						},
 						'spec': {
 							'replicas': parseInt(this.Replicas),
+							'selector':{
+								'matchLabels':{
+									'app': this.AppLabel
+								}
+							},
 							'template': {
 								'metadata': {
 									'labels': {
@@ -319,3 +327,4 @@ gcr.io/your-project-id/your-namespace/your-image:latest
 </body>
 
 </html>
+
